@@ -1,6 +1,6 @@
 require('CypherTj.core.options');
 require('CypherTj.core.keymaps');
--- require('CypherTj.core.custom-statusline');
+require('CypherTj.core.custom-statusline');
 
 -- setup lazy plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

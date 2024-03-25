@@ -20,12 +20,10 @@
 --   ["!"] = "SHELL",
 --   ["t"] = "TERMINAL",
 -- }
-
 -- local function mode()
 --   local current_mode = vim.api.nvim_get_mode().mode
 --   return string.format(" %s ", modes[current_mode]):upper()
 -- end
-
 -- local function update_mode_colors()
 --   local current_mode = vim.api.nvim_get_mode().mode
 --   local mode_color = "%#StatusLineAccent#"
@@ -44,16 +42,13 @@
 --   end
 --   return mode_color
 -- end
-
 -- local function filepath()
 --   local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")
 --   if fpath == "" or fpath == "." then
 --       return " "
 --   end
-
 --   return string.format(" %%<%s/", fpath)
 -- end
-
 -- local function lsp()
 --   local count = {}
 --   local levels = {
@@ -62,16 +57,13 @@
 --     info = "Info",
 --     hints = "Hint",
 --   }
-
 --   for k, level in pairs(levels) do
 --     count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
 --   end
-
 --   local errors = ""
 --   local warnings = ""
 --   local hints = ""
 --   local info = ""
-
 --   if count["errors"] ~= 0 then
 --     errors = " %#LspDiagnosticsSignError# " .. count["errors"]
 --   end
@@ -84,17 +76,14 @@
 --   if count["info"] ~= 0 then
 --     info = " %#LspDiagnosticsSignInformation# " .. count["info"]
 --   end
-
 --   return errors .. warnings .. hints .. info .. "%#Normal#"
 -- end
-
 -- local function lineinfo()
 --   if vim.bo.filetype == "alpha" then
 --     return ""
 --   end
 --   return " %P %l:%c "
 -- end
-
 -- local vcs = function()
 --   local git_info = vim.b.gitsigns_status_dict
 --   if not git_info or git_info.head == "" then
@@ -123,9 +112,7 @@
 --      " %#Normal#",
 --   }
 -- end
-
 -- Statusline = {}
-
 -- Statusline.active = function()
 --   return table.concat {
 --     "%#Statusline#",
@@ -140,15 +127,12 @@
 --     lineinfo(),
 --   }
 -- end
-
 -- function Statusline.inactive()
 --   return " %F"
 -- end
-
 -- function Statusline.short()
 --   return "%#StatusLineNC#   NvimTree"
 -- end
-
 -- vim.api.nvim_exec([[
 --   augroup Statusline
 --   au!
@@ -160,15 +144,111 @@
 
 
 -- diff conf
--- -- Define a function to set up the status line
---   local function setup_statusline()
---     -- Set the status line format
---     vim.o.statusline = [[ %<%f %h%m%r%w %{&fileformat} %{&filetype} %y %=%-5.(%l,%c%V%) %P ]]
+-- Define a function to get the full mode name
+--   vim.g.get_mode_name = function()
+--     local mode = vim.fn.mode()
 
---     -- Set colors for the status line
---     vim.cmd("highlight StatusLine guibg=#1e1e1e guifg=#dcdccc")
---     vim.cmd("highlight StatusLineNC guibg=#1e1e1e guifg=#5f8787")
+--     local mode_names = {
+--         n = "Normal",
+--         v = "Visual",
+--         V = "V-Line",
+--         [""] = "V-Block",
+--         s = "Select",
+--         S = "S-Line",
+--         [""] = "S-Block",
+--         i = "Insert",
+--         R = "Replace",
+--         c = "Command-Line",
+--         ["!"] = "Ex",
+--         t = "Terminal"
+--     }
+
+--     -- Return the mode name or the mode character if not found
+--     return mode_names[mode] or mode
+-- end
+
+-- -- Function to add separators around a string
+-- local function with_separators(str)
+--     local sep_s = "%#SLModeSep#"  -- start separator
+--     local sep_e = "%#SLModeSep#" -- end separator
+--     return sep_s .. str .. sep_e
+-- end
+
+-- local function setup_statusline()
+--     -- Set colors for the status line components
+--     vim.cmd("highlight VertSplit guibg=#181818 guifg=#996228")
+--     vim.cmd("highlight SLBackground guibg=#181818 guifg=#996228")
+--     vim.cmd("highlight SLFileType guibg=indianred guifg=#663333")
+--     vim.cmd("highlight SLBufNumber guibg=SeaGreen guifg=#003333")
+--     vim.cmd("highlight SLLineNumber guibg=#80a0ff guifg=#003366")
+--     vim.cmd("highlight SLModeBox guibg=#ff0000 guifg=#ffffff") -- Customize background and foreground for mode box
+--     vim.cmd("highlight SLModeSep guibg=NONE guifg=NONE")
+
+--     -- Set the status line format
+--     vim.o.statusline = table.concat({
+--     with_separators("%#SLModeBox# %{get_mode_name()} "), -- Separator for mode box
+--     with_separators("%#SLBackground# %F "), -- Separator for SLBackground component
+--     with_separators("%#SLBufNumber# BN: %n "), -- Separator for SLBufNumber component
+--     with_separators("%#SLLineNumber# LN: %l"), -- Separator for SLLineNumber component
+--     })
 -- end
 
 -- -- Call the setup function to initialize the status line
 -- setup_statusline()
+
+
+-- Define a function to get the full mode name
+  vim.g.get_mode_name = function()
+    local mode = vim.fn.mode()
+
+    local mode_names = {
+        n = "Normal",
+        v = "Visual",
+        V = "V-Line",
+        [""] = "V-Block",
+        s = "Select",
+        S = "S-Line",
+        [""] = "S-Block",
+        i = "Insert",
+        R = "Replace",
+        c = "Command-Line",
+        ["!"] = "Ex",
+        t = "Terminal"
+    }
+
+    -- Return the mode name or the mode character if not found
+    return mode_names[mode] or mode
+end
+
+-- Function to add separators around a string
+local function with_separators(str)
+    local sep_start = "%#SLModeSep#"
+    local sep_end = "%#SLModeSep#"
+    return sep_start .. str .. sep_end
+end
+
+local function setup_statusline()
+    -- Set colors for the status line components
+    vim.cmd("highlight VertSplit guibg=#181818 guifg=#996228")
+    vim.cmd("highlight SLBackground guibg=#181818 guifg=#996228")
+    vim.cmd("highlight SLFileType guibg=indianred guifg=#663333")
+    vim.cmd("highlight SLBufNumber guibg=SeaGreen guifg=#003333")
+    vim.cmd("highlight SLLineNumber guibg=#80a0ff guifg=#003366")
+    vim.cmd("highlight SLModeBox guibg=#d183e8 guifg=#080808") -- Customize background and foreground for mode box
+    vim.cmd("highlight SLModeSep guibg=NONE guifg=#d183e8") -- Separator for mode box
+
+    -- Set the status line format
+    vim.o.statusline = table.concat({
+    with_separators("%#SLModeBox# %{get_mode_name()} "), -- Separator for mode box
+    "%#SLBackground# ", with_separators("%F "), -- Separator for SLBackground component
+    "%#SLFileType# ", with_separators("FT: %Y "), -- Separator for SLFileType component
+    "%#SLBufNumber# ", with_separators("BN: %n "), -- Separator for SLBufNumber component
+    "%#SLLineNumber# ", with_separators("LN: %l"), -- Separator for SLLineNumber component
+    })
+end
+
+-- Call the setup function to initialize the status line
+setup_statusline()
+
+
+

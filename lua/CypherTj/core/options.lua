@@ -1,3 +1,12 @@
+-- Disable window status line
+vim.opt.laststatus = 3
+
+-- Set global tab line
+vim.opt.showtabline = 1
+
+-- Set winbar status
+vim.opt.winbar = '%=%m\\ %f'
+
 -- enable nerd font
 vim.g.have_nerd_font = true
 
