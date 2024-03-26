@@ -1,77 +1,77 @@
 -- icons
 local icons = {
+  git = {
+    unstaged = ' ',
+    staged = ' ',
+    unmerged = ' ',
+    renamed = ' ',
+    untracked = ' ',
+    deleted = ' ',
+    ignored = ' ',
+    conflict = '裂',
+  },
+  dashboard = {
+    lazy = '󰒲 ',
+    update = ' ',
+    sync = ' ',
+    mason = '  ',
+    telescope = '  ',
+    exit = ' ',
+  },
+  lualine = {
+    left_bar = '▊ ',
+    right_bar = ' ▊',
+    neovim_icon = ' ',
+    branch = '',
+    add = ' ',
+    change = ' ',
+    delete = ' ',
+    lsp_icon = 'lsp  ',
+    error = ' ',
+    warn = ' ',
+    hint = ' ',
+    info = ' ',
+    select = ' ',
+    terminal = ' ',
+    replace = ' ',
+    copilot_enabled = ' ',
+    copilot_sleep = '󰒲 ',
+    copilot_disabled = ' ',
+    copilot_warning = ' ',
+    copilot_unknown = ' ',
+    status_right_pop = ' ',
+    status_right_mac = ' ',
+  },
+  neotree = {
+    default = ' ',
+    symlink = ' ',
+    bookmark = ' ',
+    folder = {
+      arrow_closed = ' ',
+      arrow_open = ' ',
+      default = ' ',
+      open = ' ',
+      empty = ' ',
+      closed = ' ',
+      empty_open = ' ',
+      symlink = ' ',
+      symlink_open = ' ',
+      symlink_arrow = '  ',
+    },
+    file = {
+      modified = '󱇨 ',
+    },
     git = {
-        unstaged = " ",
-        staged = " ",
-        unmerged = " ",
-        renamed = " ",
-        untracked = " ",
-        deleted = " ",
-        ignored = " ",
-        conflict = "裂"
+      unstaged = ' ',
+      staged = ' ',
+      unmerged = ' ',
+      renamed = ' ',
+      untracked = ' ',
+      deleted = ' ',
+      ignored = ' ',
+      conflict = '裂',
     },
-    dashboard = {
-        lazy = "󰒲 ",
-        update = " ",
-        sync = " ",
-        mason = "  ",
-        telescope = "  ",
-        exit = " "
-    },
-    lualine = {
-        left_bar = "▊ ",
-        right_bar = " ▊",
-        neovim_icon = " ",
-        branch = "",
-        add = " ",
-        change = " ",
-        delete = " ",
-        lsp_icon = "lsp  ",
-        error = " ",
-        warn = " ",
-        hint = " ",
-        info = " ",
-        select = " ",
-        terminal = " ",
-        replace = " ",
-        copilot_enabled = " ",
-        copilot_sleep = "󰒲 ",
-        copilot_disabled = " ",
-        copilot_warning = " ",
-        copilot_unknown = " ",
-        status_right_pop = " ",
-        status_right_mac = " "
-    },
-    neotree = {
-        default = " ",
-        symlink = " ",
-        bookmark = " ",
-        folder = {
-            arrow_closed = " ",
-            arrow_open = " ",
-            default = " ",
-            open = " ",
-            empty = " ",
-            closed = " ",
-            empty_open = " ",
-            symlink = " ",
-            symlink_open = " ",
-            symlink_arrow = "  "
-        },
-        file = {
-            modified = "󱇨 "
-        },
-        git = {
-            unstaged = " ",
-            staged = " ",
-            unmerged = " ",
-            renamed = " ",
-            untracked = " ",
-            deleted = " ",
-            ignored = " ",
-            conflict = "裂"
-        }
-    }
+  },
 }
 
 -- return {
@@ -789,7 +789,6 @@ local icons = {
 --     end
 -- }
 
-
 -- return {
 --     'nvim-lualine/lualine.nvim',
 --     dependencies = {'nvim-tree/nvim-web-devicons'},
@@ -808,7 +807,7 @@ local icons = {
 --             violet = '#d183e8',
 --             grey   = '#303030',
 --         }
-        
+
 --         local bubbles_theme = {
 --             normal = {
 --                 a = { fg = colors.black, bg = colors.violet },

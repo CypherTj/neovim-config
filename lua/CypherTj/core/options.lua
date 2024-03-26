@@ -5,7 +5,7 @@ vim.opt.laststatus = 3
 vim.opt.showtabline = 1
 
 -- Set winbar status
-vim.opt.winbar = '%=%m\\ %f'
+-- vim.opt.winbar = '%=%m\\ %f'
 
 -- enable nerd font
 vim.g.have_nerd_font = true
@@ -28,13 +28,13 @@ vim.opt.smartcase = true
 
 -- appearance
 vim.opt.termguicolors = true
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = 'yes'
 
 -- backspace
-vim.opt.backspace = "indent,eol,start"
+vim.opt.backspace = 'indent,eol,start'
 
 -- clipboard
-vim.opt.clipboard:append('unnamedplus')
+vim.opt.clipboard:append 'unnamedplus'
 
 -- split windows
 vim.opt.splitright = true
