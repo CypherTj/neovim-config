@@ -185,51 +185,58 @@
 --     with_separators("%#SLLineNumber# LN: %l"), -- Separator for SLLineNumber component
 --     })
 -- end
--- -- Call the setup function to initialize the status line
+-- Call the setup function to initialize the status line
 -- setup_statusline()
+
+-- function starts here
+
 -- Define a function to get the full mode name
---   vim.g.get_mode_name = function()
---     local mode = vim.fn.mode()
---     local mode_names = {
---         n = "Normal",
---         v = "Visual",
---         V = "V-Line",
---         [""] = "V-Block",
---         s = "Select",
---         S = "S-Line",
---         [""] = "S-Block",
---         i = "Insert",
---         R = "Replace",
---         c = "Command-Line",
---         ["!"] = "Ex",
---         t = "Terminal"
---     }
---     -- Return the mode name or the mode character if not found
---     return mode_names[mode] or mode
+-- vim.g.get_mode_name = function()
+--   local mode = vim.fn.mode()
+--   local mode_names = {
+--     n = 'Normal',
+--     v = 'Visual',
+--     V = 'V-Line',
+--     [''] = 'V-Block',
+--     s = 'Select',
+--     S = 'S-Line',
+--     [''] = 'S-Block',
+--     i = 'Insert',
+--     R = 'Replace',
+--     c = 'Command-Line',
+--     ['!'] = 'Ex',
+--     t = 'Terminal',
+--   }
+--   -- Return the mode name or the mode character if not found
+--   return mode_names[mode] or mode
 -- end
 -- -- Function to add separators around a string
 -- local function with_separators(str)
---     local sep_start = "%#SLModeSep#"
---     local sep_end = "%#SLModeSep#"
---     return sep_start .. str .. sep_end
+--   local sep_start = '%#SLModeSep#'
+--   local sep_end = '%#SLModeSep#'
+--   return sep_start .. str .. sep_end
 -- end
 -- local function setup_statusline()
---     -- Set colors for the status line components
---     vim.cmd("highlight VertSplit guibg=#181818 guifg=#996228")
---     vim.cmd("highlight SLBackground guibg=#181818 guifg=#996228")
---     vim.cmd("highlight SLFileType guibg=indianred guifg=#663333")
---     vim.cmd("highlight SLBufNumber guibg=SeaGreen guifg=#003333")
---     vim.cmd("highlight SLLineNumber guibg=#80a0ff guifg=#003366")
---     vim.cmd("highlight SLModeBox guibg=#d183e8 guifg=#080808") -- Customize background and foreground for mode box
---     vim.cmd("highlight SLModeSep guibg=NONE guifg=#d183e8") -- Separator for mode box
---     -- Set the status line format
---     vim.o.statusline = table.concat({
---     with_separators("%#SLModeBox# %{get_mode_name()} "), -- Separator for mode box
---     "%#SLBackground# ", with_separators("%F "), -- Separator for SLBackground component
---     "%#SLFileType# ", with_separators("FT: %Y "), -- Separator for SLFileType component
---     "%#SLBufNumber# ", with_separators("BN: %n "), -- Separator for SLBufNumber component
---     "%#SLLineNumber# ", with_separators("LN: %l"), -- Separator for SLLineNumber component
---     })
+--   -- Set colors for the status line components
+--   vim.cmd 'highlight VertSplit guibg=#181818 guifg=#996228'
+--   vim.cmd 'highlight SLBackground guibg=#181818 guifg=#996228'
+--   vim.cmd 'highlight SLFileType guibg=indianred guifg=#663333'
+--   vim.cmd 'highlight SLBufNumber guibg=SeaGreen guifg=#003333'
+--   vim.cmd 'highlight SLLineNumber guibg=#80a0ff guifg=#003366'
+--   vim.cmd 'highlight SLModeBox guibg=#d183e8 guifg=#080808 gui=bold' -- Customize background and foreground for mode box
+--   vim.cmd 'highlight SLModeSep guibg=NONE guifg=#d183e8' -- Separator for mode box
+--   -- Set the status line format
+--   vim.o.statusline = table.concat {
+--     with_separators '%#SLModeBox# %{get_mode_name()} ', -- Separator for mode box
+--     '%#SLBackground# ',
+--     with_separators '%F ', -- Separator for SLBackground component
+--     '%#SLFileType# ',
+--     with_separators 'FT: %Y ', -- Separator for SLFileType component
+--     '%#SLBufNumber# ',
+--     with_separators 'BN: %n ', -- Separator for SLBufNumber component
+--     '%#SLLineNumber# ',
+--     with_separators 'LN: %l', -- Separator for SLLineNumber component
+--   }
 -- end
 -- -- Call the setup function to initialize the status line
 -- setup_statusline()

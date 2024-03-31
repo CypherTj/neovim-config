@@ -37,3 +37,16 @@ require('lazy').setup({ { import = 'CypherTj.plugins' }, { import = 'CypherTj.pl
     },
   },
 })
+
+
+
+-- load statusline
+require 'CypherTj.core.statusline'
+
+-- Function to set the statusline
+local function set_statusline()
+  vim.o.statusline = '%!luaeval("require\'CypherTj.core.statusline\'.statusline()")'
+end
+
+-- Set the initial statusline
+set_statusline()
